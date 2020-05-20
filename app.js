@@ -76,7 +76,6 @@ function sampleMetadata(met_data) {
 
     var dropDown = d3.select("#selDataset");
   
-    // Use the List of Sample Names to Populate the Select Options
     d3.json("./samples.json").then(data => {
       sampleNames = data.names;
       sampleNames.forEach((name) => {
@@ -86,7 +85,6 @@ function sampleMetadata(met_data) {
           .property("value");
       });
   
-      // Use the First Sample from the List to Build Initial Plots
       const firstSample = sampleNames[0];
       plotCharts(firstSample);
       sampleMetadata(firstSample);
@@ -94,7 +92,6 @@ function sampleMetadata(met_data) {
   }
   
   function optionChanged(newSample) {
-    // Fetch New Data Each Time a New Sample is Selected
     plotCharts(newSample);
     sampleMetadata(newSample);
   }
